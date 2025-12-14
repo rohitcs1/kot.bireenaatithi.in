@@ -1,7 +1,7 @@
 // src/pages/BillingDashboard.jsx
 import React, { useState, useMemo, useEffect } from "react";
 import api from '../api';
-import "./billing.css";
+import "./Billing.css";
 import Confetti from '../components/Confetti';
 import BillPrint from '../components/BillPrint';
 
