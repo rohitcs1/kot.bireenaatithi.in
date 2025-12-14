@@ -1,0 +1,223 @@
+/* ============================================
+   Offline Sync Page - Enhanced Tailwind Styling
+   ============================================ */
+
+/* Custom Animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation Classes */
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-toast-slide-in {
+  animation: toast-slide-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Status Indicator Pulse Animation */
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.status-syncing {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+/* Queue Item Hover Effect */
+.queue-item-hover {
+  transition: all 0.2s ease;
+}
+
+.queue-item-hover:hover {
+  transform: translateX(4px);
+}
+
+/* Retry Button Animation */
+.retry-button {
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.retry-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Force Sync Button Ripple Effect */
+.force-sync-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.force-sync-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.force-sync-button:hover:not(:disabled)::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Status Badge Glow Effect */
+.status-badge-online {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.status-badge-offline {
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+.status-badge-syncing {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.status-badge-error {
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+/* PWA Card Hover Effect */
+.pwa-card {
+  transition: all 0.2s ease;
+}
+
+.pwa-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Technical Info Card Animation */
+.tech-card {
+  transition: all 0.2s ease;
+}
+
+.tech-card:hover {
+  transform: translateX(4px);
+  border-color: rgb(99, 102, 241);
+}
+
+/* Empty Queue State Animation */
+.empty-queue-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .animate-slide-up {
+    animation-duration: 0.3s;
+  }
+  
+  .queue-item-hover:hover {
+    transform: none;
+  }
+}
+
+/* Loading Spinner Enhancement */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Accessibility Enhancements */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgb(99, 102, 241);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .offline-sync-page {
+    background: white;
+  }
+  
+  .bg-white {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+  
+  button {
+    display: none;
+  }
+}

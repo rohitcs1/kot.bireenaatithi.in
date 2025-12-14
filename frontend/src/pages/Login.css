@@ -1,0 +1,219 @@
+/* ============================================
+   Login Page - Enhanced Tailwind Styling
+   ============================================ */
+
+/* Custom Animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px);
+  }
+}
+
+/* Animation Classes */
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-toast-slide-in {
+  animation: toast-slide-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-checkmark {
+  animation: checkmark 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Input Focus Group Effect */
+.group:focus-within .group-focus-within\:text-blue-500 {
+  color: rgb(59, 130, 246);
+}
+
+/* Custom Checkbox Styling Enhancement */
+input[type="checkbox"]:checked {
+  background-image: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(34, 197, 230) 100%);
+  border-color: rgb(59, 130, 246);
+}
+
+/* Select Dropdown - Remove default arrow since we have custom SVG */
+select {
+  background-image: none;
+}
+
+/* Button Ripple Effect */
+.submit-button-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.submit-button-ripple:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* Loading Spinner Enhancement */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+  
+  .input-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Accessibility Enhancements */
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgb(59, 130, 246);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .login-container {
+    background: white;
+  }
+  
+  .login-card {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode styles if needed */
+}
+
+/* ============================================
+   Footer Styles (Login Page)
+   ============================================ */
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0.75rem 1rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+  font-size: 0.9375rem; /* 15px */
+  letter-spacing: 0.2px;
+  background: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .login-footer {
+    background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.48));
+    color: #e6eef8;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 -8px 24px rgba(2,6,23,0.45) inset;
+    backdrop-filter: blur(6px);
+  }
+
+  /* Slightly smaller text on very small screens */
+  @media (max-width: 420px) {
+    .login-footer { font-size: 0.85rem; padding: 0.6rem 0.75rem; }
+  }
+}
+
+/* Optional: add an accent dot or divider above footer for separation */
+.login-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 640px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+

@@ -1,0 +1,53 @@
+// backup of previous version
+const supabase = require('../config/supabase');
+
+async function listMenu(req, res) {
+  const hotelId = req.user.hotel_id;
+  try {
+    const { data, error } = await supabase.from('menus').select('*').eq('hotel_id', hotelId);
+    if (error) throw error;
+    return res.json({ menu: data });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
+
+async function createMenu(req, res) {
+  const hotelId = req.user.hotel_id;
+  const { name, price, category_id, description, veg = false, available = true } = req.body;
+  if (!name || price == null) return res.status(400).json({ error: 'Missing fields' });
+  try {
+    const { data, error } = await supabase.from('menus').insert([{ hotel_id: hotelId, name, price, category_id, description, veg, available }]).select().single();
+    if (error) throw error;
+    return res.json({ menu: data });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
+
+async function updateMenu(req, res) {
+  const hotelId = req.user.hotel_id;
+  const { id } = req.params;
+  const payload = req.body;
+  try {
+    const { data, error } = await supabase.from('menus').update(payload).eq('id', id).eq('hotel_id', hotelId).select().single();
+    if (error) throw error;
+    return res.json({ menu: data });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
+
+async function deleteMenu(req, res) {
+  const hotelId = req.user.hotel_id;
+  const { id } = req.params;
+  try {
+    const { error } = await supabase.from('menus').delete().eq('id', id).eq('hotel_id', hotelId);
+    if (error) throw error;
+    return res.json({ ok: true });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
+
+module.exports = { listMenu, createMenu, updateMenu, deleteMenu };

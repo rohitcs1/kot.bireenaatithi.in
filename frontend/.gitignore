@@ -1,0 +1,74 @@
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+.vite/
+.parcel-cache/
+.next/
+.nuxt/
+
+# Environment variables
+.env
+.env.*
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# IDEs and editors
+.vscode/
+.idea/
+/.vscode/*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Caches
+.cache/
+.turbo/
+.parcel-cache/
+.esbuild/
+
+# Package manager files (optional)
+# Uncomment if you don't want locks in repo
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Runtime / pnp
+.pnp/
+.pnp.js
+
+# Test output
+coverage/
+.nyc_output/
+
+# Misc
+.eslintcache
+.prettierignore
+.idea/
+.history/
+/.sass-cache
+/.cache
+
+# Secrets
+secrets.local
+*.secret
+
+# Ensure .gitignore is tracked
+!.gitignore

@@ -1,0 +1,14 @@
+{
+  "name": "Restaurant POS",
+  "short_name": "POS",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}
+

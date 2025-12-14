@@ -1,0 +1,1047 @@
+/* ============================================
+   GLOBAL CSS - Restaurant KOT System
+   React + Tailwind CSS Design System
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   1. RESET STYLES
+   ============================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply m-0 p-0;
+    @apply font-sans antialiased;
+    @apply bg-background text-text-primary;
+    @apply leading-relaxed;
+    font-family: 'Inter', 'Poppins', 'Outfit', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Remove default margins */
+  h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+    @apply m-0;
+  }
+
+  /* Remove list styles */
+  ul, ol {
+    @apply list-none;
+  }
+
+  /* Remove button defaults */
+  button {
+    @apply border-0 bg-transparent p-0;
+    font-family: inherit;
+  }
+
+  /* Remove input defaults */
+  input, textarea, select {
+    @apply border-0;
+    font-family: inherit;
+  }
+
+  /* Remove link defaults */
+  a {
+    @apply no-underline;
+    color: inherit;
+  }
+
+  /* Image defaults */
+  img {
+    @apply max-w-full h-auto;
+    display: block;
+  }
+
+  /* Focus visible styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+}
+
+/* ============================================
+   2. TYPOGRAPHY UTILITIES
+   ============================================ */
+
+@layer utilities {
+  /* Heading Styles */
+  .text-heading-1 {
+    @apply text-4xl lg:text-5xl font-bold text-text-primary leading-tight;
+  }
+
+  .text-heading-2 {
+    @apply text-3xl lg:text-4xl font-bold text-text-primary leading-tight;
+  }
+
+  .text-heading-3 {
+    @apply text-2xl lg:text-3xl font-semibold text-text-primary leading-snug;
+  }
+
+  .text-heading-4 {
+    @apply text-xl lg:text-2xl font-semibold text-text-primary leading-snug;
+  }
+
+  /* Body Text */
+  .text-body {
+    @apply text-base text-text-secondary leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm text-text-secondary leading-relaxed;
+  }
+
+  .text-body-lg {
+    @apply text-lg text-text-secondary leading-relaxed;
+  }
+
+  /* Text Colors */
+  .text-muted {
+    @apply text-text-tertiary;
+  }
+
+  .text-primary {
+    @apply text-primary-600;
+  }
+
+  .text-secondary {
+    @apply text-secondary-600;
+  }
+
+  /* Text Utilities */
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ============================================
+   3. BUTTON CLASSES
+   ============================================ */
+
+@layer components {
+  /* Base Button */
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2.5 rounded-xl;
+    @apply font-semibold text-sm lg:text-base;
+    @apply transition-all duration-200 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply disabled:transform-none disabled:hover:shadow-none;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-primary-600 text-white;
+    @apply hover:bg-primary-700 hover:shadow-lg;
+    @apply active:bg-primary-800 active:transform active:scale-95;
+    @apply focus:ring-primary-500;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply bg-white text-primary-600 border-2 border-primary-600;
+    @apply hover:bg-primary-50 hover:border-primary-700;
+    @apply active:bg-primary-100 active:transform active:scale-95;
+    @apply focus:ring-primary-500;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply bg-transparent text-primary-600;
+    @apply hover:bg-primary-50;
+    @apply active:bg-primary-100 active:transform active:scale-95;
+    @apply focus:ring-primary-500;
+  }
+
+  /* Danger Button */
+  .btn-danger {
+    @apply bg-error text-white;
+    @apply hover:bg-error-dark hover:shadow-lg;
+    @apply active:bg-red-800 active:transform active:scale-95;
+    @apply focus:ring-error;
+  }
+
+  /* Button Sizes */
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-lg;
+  }
+
+  /* Button with Icon */
+  .btn-icon {
+    @apply w-5 h-5 mr-2 flex-shrink-0;
+  }
+
+  .btn-icon-only {
+    @apply p-2;
+  }
+
+  .btn-icon-only .btn-icon {
+    @apply mr-0;
+  }
+
+  /* Loading Button */
+  .btn-loading {
+    @apply relative;
+  }
+
+  .btn-loading::before {
+    content: '';
+    @apply absolute inset-0 bg-current opacity-20 rounded-xl;
+    @apply animate-pulse;
+  }
+}
+
+/* ============================================
+   4. CARD UTILITIES
+   ============================================ */
+
+@layer components {
+  /* Base Card */
+  .card {
+    @apply bg-white rounded-xl shadow-soft border border-border-light;
+    @apply p-6;
+    @apply transition-all duration-300 ease-out;
+    @apply animate-fade-in;
+  }
+
+  /* Card Hover Lift Effect */
+  .card:hover {
+    @apply shadow-card-hover transform -translate-y-1;
+  }
+
+  /* Card Variants */
+  .card-elevated {
+    @apply shadow-elevated;
+  }
+
+  .card-interactive {
+    @apply cursor-pointer;
+  }
+
+  .card-interactive:hover {
+    @apply shadow-card-hover transform -translate-y-2;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-br from-white to-gray-50;
+  }
+
+  /* Card Padding Variants */
+  .card-sm {
+    @apply p-4;
+  }
+
+  .card-lg {
+    @apply p-8;
+  }
+}
+
+/* ============================================
+   5. INPUT, SELECT, CHECKBOX, RADIO STYLING
+   ============================================ */
+
+@layer components {
+  /* Input Field */
+  .input {
+    @apply w-full px-4 py-3;
+    @apply text-base text-text-primary;
+    @apply bg-white border-2 border-border-light rounded-xl;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20;
+    @apply placeholder:text-text-tertiary;
+    @apply disabled:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input:hover:not(:disabled) {
+    @apply border-border;
+  }
+
+  /* Input with Icon */
+  .input-icon-left {
+    @apply pl-11;
+  }
+
+  .input-icon-right {
+    @apply pr-11;
+  }
+
+  /* Input States */
+  .input-error {
+    @apply border-error bg-error-light/10;
+    @apply focus:border-error focus:ring-error/20;
+  }
+
+  .input-success {
+    @apply border-success bg-success-light/10;
+    @apply focus:border-success focus:ring-success/20;
+  }
+
+  /* Label */
+  .label {
+    @apply block text-sm font-semibold text-text-primary mb-2;
+  }
+
+  .label-required::after {
+    content: ' *';
+    @apply text-error;
+  }
+
+  /* Select/Dropdown */
+  .select {
+    @apply input appearance-none cursor-pointer;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5rem;
+    @apply pr-12;
+  }
+
+  .select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  }
+
+  /* Checkbox */
+  .checkbox {
+    @apply w-5 h-5 rounded-lg border-2 border-border;
+    @apply appearance-none cursor-pointer;
+    @apply transition-all duration-200;
+    @apply checked:bg-primary-600 checked:border-primary-600;
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply hover:border-primary-500;
+  }
+
+  .checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Radio Button */
+  .radio {
+    @apply w-5 h-5 rounded-full border-2 border-border;
+    @apply appearance-none cursor-pointer;
+    @apply transition-all duration-200;
+    @apply checked:bg-primary-600 checked:border-primary-600;
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply hover:border-primary-500;
+  }
+
+  .radio:checked {
+    background-image: radial-gradient(circle, white 35%, transparent 35%);
+  }
+
+  /* Toggle Switch */
+  .toggle {
+    @apply relative inline-block w-11 h-6;
+  }
+
+  .toggle input {
+    @apply opacity-0 w-0 h-0;
+  }
+
+  .toggle-slider {
+    @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0;
+    @apply bg-gray-300 rounded-full transition-all duration-300;
+  }
+
+  .toggle-slider:before {
+    content: '';
+    @apply absolute h-5 w-5 left-0.5 bottom-0.5;
+    @apply bg-white rounded-full transition-all duration-300;
+    @apply shadow-sm;
+  }
+
+  .toggle input:checked + .toggle-slider {
+    @apply bg-primary-600;
+  }
+
+  .toggle input:checked + .toggle-slider:before {
+    @apply transform translate-x-5;
+  }
+
+  /* Form Error Message */
+  .form-error {
+    @apply flex items-center gap-2 mt-1 text-sm text-error;
+  }
+
+  /* Form Success Message */
+  .form-success {
+    @apply flex items-center gap-2 mt-1 text-sm text-success;
+  }
+}
+
+/* ============================================
+   6. MODAL ANIMATIONS
+   ============================================ */
+
+@layer components {
+  /* Modal Overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm;
+    @apply flex items-center justify-center z-50;
+    @apply animate-fade-in;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    @apply bg-white rounded-2xl shadow-elevated;
+    @apply max-w-md w-full mx-4 p-6;
+    @apply animate-scale-up;
+    @apply max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    @apply flex items-center justify-between mb-4;
+  }
+
+  .modal-title {
+    @apply text-2xl font-bold text-text-primary;
+  }
+
+  .modal-close {
+    @apply p-2 rounded-lg text-text-tertiary;
+    @apply hover:bg-gray-100 hover:text-text-primary;
+    @apply transition-colors duration-200;
+  }
+
+  /* Modal Body */
+  .modal-body {
+    @apply mb-6;
+  }
+
+  /* Modal Footer */
+  .modal-footer {
+    @apply flex items-center justify-end gap-3;
+  }
+}
+
+/* Modal Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   7. TABLE STYLES
+   ============================================ */
+
+@layer components {
+  /* Table Wrapper */
+  .table-wrapper {
+    @apply overflow-x-auto rounded-xl border border-border-light bg-white shadow-soft;
+  }
+
+  /* Table */
+  .table {
+    @apply w-full border-collapse;
+  }
+
+  /* Table Header */
+  .table thead {
+    @apply bg-gray-50 border-b-2 border-border-light;
+  }
+
+  .table th {
+    @apply px-6 py-4 text-left text-xs font-bold text-text-primary uppercase tracking-wider;
+    @apply sticky top-0 bg-gray-50 z-10;
+  }
+
+  /* Table Body */
+  .table td {
+    @apply px-6 py-4 text-sm text-text-secondary whitespace-nowrap;
+  }
+
+  .table tbody tr {
+    @apply border-b border-border-light transition-colors duration-150;
+  }
+
+  /* Zebra Row Pattern */
+  .table tbody tr:nth-child(even) {
+    @apply bg-gray-50/50;
+  }
+
+  /* Hover Highlight */
+  .table tbody tr:hover {
+    @apply bg-gray-100;
+  }
+
+  /* Sortable Column */
+  .table-sortable {
+    @apply cursor-pointer select-none;
+  }
+
+  .table-sortable:hover {
+    @apply bg-gray-100;
+  }
+
+  .table-sort-icon {
+    @apply inline-block ml-2 text-text-tertiary;
+  }
+}
+
+/* ============================================
+   8. NOTIFICATION/TOAST CLASSES
+   ============================================ */
+
+@layer components {
+  /* Base Toast */
+  .toast {
+    @apply fixed z-50 flex items-center gap-3;
+    @apply px-4 py-3 rounded-xl shadow-elevated;
+    @apply min-w-[280px] max-w-[90vw];
+    @apply animate-toast-slide-down;
+    @apply backdrop-blur-sm border;
+  }
+
+  /* Toast Types */
+  .toast-success {
+    @apply bg-gradient-to-r from-success to-success-dark text-white;
+    @apply border-success-dark/20;
+  }
+
+  .toast-error {
+    @apply bg-gradient-to-r from-error to-error-dark text-white;
+    @apply border-error-dark/20;
+  }
+
+  .toast-warning {
+    @apply bg-gradient-to-r from-processing to-processing-dark text-white;
+    @apply border-processing-dark/20;
+  }
+
+  .toast-info {
+    @apply bg-gradient-to-r from-info to-info-dark text-white;
+    @apply border-info-dark/20;
+  }
+
+  /* Toast Positions */
+  .toast-top-right {
+    @apply top-4 right-4;
+  }
+
+  .toast-top-left {
+    @apply top-4 left-4;
+  }
+
+  .toast-bottom-right {
+    @apply bottom-4 right-4;
+  }
+
+  .toast-bottom-left {
+    @apply bottom-4 left-4;
+  }
+
+  /* Toast Content */
+  .toast-icon {
+    @apply flex-shrink-0 w-5 h-5;
+  }
+
+  .toast-content {
+    @apply flex-1;
+  }
+
+  .toast-title {
+    @apply font-bold text-sm mb-0.5;
+  }
+
+  .toast-message {
+    @apply text-xs opacity-95;
+  }
+
+  .toast-close {
+    @apply flex-shrink-0 p-1 rounded-lg;
+    @apply hover:bg-white/20 transition-colors duration-200;
+  }
+}
+
+/* Toast Animation */
+@keyframes toast-slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-toast-slide-down {
+  animation: toast-slide-down 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============================================
+   9. STATUS BADGE CLASSES
+   ============================================ */
+
+@layer components {
+  /* Base Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1;
+    @apply rounded-full text-xs font-semibold;
+    @apply border;
+  }
+
+  /* Badge Types */
+  .badge-success {
+    @apply bg-success-light text-success-dark border-success;
+  }
+
+  .badge-pending {
+    @apply bg-pending-light text-pending-dark border-pending;
+  }
+
+  .badge-processing {
+    @apply bg-processing-light text-processing-dark border-processing;
+  }
+
+  .badge-ready {
+    @apply bg-ready-light text-ready-dark border-ready;
+  }
+
+  .badge-offline {
+    @apply bg-offline-light text-offline-dark border-offline;
+  }
+
+  .badge-error {
+    @apply bg-error-light text-error-dark border-error;
+  }
+
+  .badge-info {
+    @apply bg-info-light text-info-dark border-info;
+  }
+
+  /* Badge Dot Indicator */
+  .badge-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .badge-success .badge-dot {
+    @apply bg-success;
+  }
+
+  .badge-pending .badge-dot {
+    @apply bg-pending;
+  }
+
+  .badge-processing .badge-dot {
+    @apply bg-processing;
+  }
+
+  .badge-ready .badge-dot {
+    @apply bg-ready;
+  }
+
+  .badge-error .badge-dot {
+    @apply bg-error;
+  }
+
+  .badge-info .badge-dot {
+    @apply bg-info;
+  }
+
+  .badge-offline .badge-dot {
+    @apply bg-offline;
+  }
+}
+
+/* ============================================
+   10. SKELETON LOADER SHIMMER EFFECT
+   ============================================ */
+
+@layer components {
+  /* Base Skeleton */
+  .skeleton {
+    @apply animate-shimmer bg-gray-200 rounded;
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 0%,
+      #e0e0e0 20%,
+      #f0f0f0 40%,
+      #f0f0f0 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Skeleton Variants */
+  .skeleton-card {
+    @apply skeleton h-48 rounded-xl;
+  }
+
+  .skeleton-text {
+    @apply skeleton h-4 rounded;
+  }
+
+  .skeleton-title {
+    @apply skeleton h-6 rounded w-3/4;
+  }
+
+  .skeleton-avatar {
+    @apply skeleton w-12 h-12 rounded-full;
+  }
+
+  .skeleton-button {
+    @apply skeleton h-10 rounded-xl w-24;
+  }
+
+  .skeleton-input {
+    @apply skeleton h-12 rounded-xl;
+  }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+/* ============================================
+   11. DARK MODE BASE STYLES
+   ============================================ */
+
+@layer base {
+  .dark {
+    @apply bg-background-dark text-text-inverse;
+  }
+
+  .dark .card {
+    @apply bg-gray-800 border-gray-700 text-gray-100;
+  }
+
+  .dark .card:hover {
+    @apply shadow-lg;
+  }
+
+  .dark .input {
+    @apply bg-gray-800 border-gray-700 text-gray-100;
+  }
+
+  .dark .input:focus {
+    @apply border-primary-500;
+  }
+
+  .dark .select {
+    @apply bg-gray-800 border-gray-700 text-gray-100;
+  }
+
+  .dark .table {
+    @apply bg-gray-800;
+  }
+
+  .dark .table thead {
+    @apply bg-gray-900;
+  }
+
+  .dark .table th {
+    @apply bg-gray-900 text-gray-200;
+  }
+
+  .dark .table tbody tr {
+    @apply border-gray-700;
+  }
+
+  .dark .table tbody tr:hover {
+    @apply bg-gray-700;
+  }
+
+  .dark .table tbody tr:nth-child(even) {
+    @apply bg-gray-800;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-gray-700 text-gray-100 border-gray-600;
+    @apply hover:bg-gray-600;
+  }
+
+  .dark .btn-ghost {
+    @apply text-gray-300;
+    @apply hover:bg-gray-700;
+  }
+
+  .dark .modal-content {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .dark .modal-close {
+    @apply text-gray-400;
+    @apply hover:bg-gray-700 hover:text-gray-200;
+  }
+}
+
+/* ============================================
+   12. RESPONSIVE SPACING UTILITIES
+   ============================================ */
+
+@layer utilities {
+  /* Responsive Padding */
+  .p-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .px-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .py-responsive {
+    @apply py-4 sm:py-6 lg:py-8;
+  }
+
+  /* Responsive Margin */
+  .m-responsive {
+    @apply m-4 sm:m-6 lg:m-8;
+  }
+
+  .mx-responsive {
+    @apply mx-4 sm:mx-6 lg:mx-8;
+  }
+
+  .my-responsive {
+    @apply my-4 sm:my-6 lg:my-8;
+  }
+
+  /* Responsive Gap */
+  .gap-responsive {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  /* Responsive Container */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive Section */
+  .section-responsive {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+}
+
+/* ============================================
+   13. ADDITIONAL UTILITIES
+   ============================================ */
+
+@layer utilities {
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  /* Glass Effect */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-border-light my-4;
+  }
+
+  .divider-vertical {
+    @apply border-l border-border-light mx-4;
+  }
+
+  /* Focus Visible */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+}
+
+/* ============================================
+   14. SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Dark Mode Scrollbar */
+.dark ::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* ============================================
+   15. LAYOUT UTILITIES
+   ============================================ */
+
+@layer components {
+  /* Main Layout Container */
+  .main-layout-container {
+    @apply relative w-full flex flex-row;
+  }
+
+  /* Main Content Area */
+  .main-content-area {
+    @apply w-full min-w-0 relative;
+  }
+
+  @media (min-width: 1024px) {
+    .main-content-area {
+      @apply flex-1;
+      margin-left: 16rem;
+      @apply transition-all duration-300;
+    }
+    
+    .main-content-area.sidebar-collapsed {
+      margin-left: 4rem;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .main-content-area {
+      @apply w-full;
+      margin-left: 0;
+    }
+  }
+
+  /* Page Content Wrapper */
+  .page-content-wrapper {
+    @apply w-full min-h-[calc(100vh-64px)] p-0 m-0 bg-transparent;
+  }
+}
+
+/* ============================================
+   16. ADDITIONAL ANIMATIONS
+   ============================================ */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================
+   17. MOBILE RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 640px) {
+  .card {
+    @apply p-4 rounded-lg;
+  }
+
+  .btn {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .table-wrapper {
+    @apply rounded-lg;
+  }
+
+  .table th,
+  .table td {
+    @apply px-3 py-2 text-xs;
+  }
+}
+

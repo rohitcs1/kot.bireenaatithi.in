@@ -1,0 +1,30 @@
+/* Subscription Management Page Styles */
+.subscription-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+.subscription-header { margin-bottom: 2rem; }
+.subscription-title { font-size: 2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
+.subscription-subtitle { color: #64748b; font-size: 0.95rem; }
+.subscriptions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.subscription-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); border: 2px solid #e2e8f0; transition: all 0.3s ease; }
+.subscription-card.featured { border-color: #3b82f6; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15); transform: translateY(-8px); }
+.plan-name { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
+.plan-price { font-size: 2rem; font-weight: 700; color: #3b82f6; margin-bottom: 1rem; }
+.plan-price span { font-size: 0.875rem; color: #64748b; font-weight: 500; }
+.plan-description { color: #64748b; font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; }
+.plan-features { margin-bottom: 1.5rem; }
+.feature { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; font-size: 0.875rem; color: #64748b; }
+.feature svg { width: 18px; height: 18px; color: #10b981; flex-shrink: 0; }
+.plan-action { width: 100%; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; background: white; color: #3b82f6; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.plan-action:hover { border-color: #3b82f6; background: #f0f9ff; }
+.subscription-card.featured .plan-action { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; }
+.subscription-card.featured .plan-action:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3); }
+.active-subscriptions { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+.subscriptions-table { width: 100%; border-collapse: collapse; }
+.subscriptions-table thead { background: #f8fafc; border-bottom: 2px solid #e2e8f0; }
+.subscriptions-table th { padding: 1rem; text-align: left; font-weight: 600; color: #64748b; font-size: 0.875rem; }
+.subscriptions-table td { padding: 1rem; border-bottom: 1px solid #e2e8f0; }
+.subscriptions-table tbody tr:hover { background: #f8fafc; }
+.status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+.status-active { background: #d1fae5; color: #065f46; }
+.status-expired { background: #fee2e2; color: #991b1b; }
+.status-trial { background: #fef3c7; color: #92400e; }
+@media (max-width: 768px) { .subscription-container { padding: 1rem 0.5rem; } .subscriptions-grid { grid-template-columns: 1fr; } .subscription-title { font-size: 1.5rem; } .subscriptions-table { font-size: 0.875rem; } }

@@ -1,0 +1,19 @@
+/* Create Hotel Page Styles */
+.create-hotel-container { max-width: 600px; margin: 0 auto; padding: 2rem 1rem; }
+.hotel-form { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
+.form-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
+.form-subtitle { color: #64748b; margin-bottom: 2rem; font-size: 0.95rem; }
+.form-group { margin-bottom: 1.5rem; }
+.form-label { display: block; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.form-input, .form-textarea, .form-select { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; font-size: 0.95rem; color: #1e293b; transition: all 0.3s ease; }
+.form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-actions { display: flex; gap: 1rem; margin-top: 2rem; }
+.btn { flex: 1; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.btn-primary { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3); }
+.btn-secondary { background: white; border: 2px solid #e2e8f0; color: #64748b; }
+.btn-secondary:hover { border-color: #94a3b8; }
+.error-message { color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; }
+.success-message { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
+@media (max-width: 768px) { .create-hotel-container { padding: 1rem 0.5rem; } .hotel-form { padding: 1.5rem 1rem; } .form-actions { flex-direction: column; } }

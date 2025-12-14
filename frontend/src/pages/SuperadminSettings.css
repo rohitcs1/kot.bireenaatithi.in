@@ -1,0 +1,29 @@
+/* Superadmin Settings Styles */
+.superadmin-settings { padding: 2rem 1rem; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); min-height: calc(100vh - 64px); }
+.settings-container { max-width: 900px; margin: 0 auto; }
+.settings-header { margin-bottom: 2rem; }
+.settings-title { font-size: 2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
+.settings-subtitle { color: #64748b; font-size: 0.95rem; }
+.settings-section { background: white; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f1f5f9; }
+.section-title { font-size: 1.25rem; font-weight: 600; color: #1e293b; }
+.section-description { color: #64748b; font-size: 0.875rem; }
+.settings-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #f1f5f9; }
+.settings-item:last-child { border-bottom: none; }
+.item-info h3 { margin: 0; font-size: 1rem; color: #1e293b; font-weight: 600; }
+.item-info p { margin: 0.25rem 0 0; color: #64748b; font-size: 0.875rem; }
+.toggle-switch { position: relative; width: 50px; height: 28px; background: #e2e8f0; border-radius: 14px; cursor: pointer; transition: background 0.3s; }
+.toggle-switch.active { background: #10b981; }
+.toggle-knob { position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; background: white; border-radius: 50%; transition: left 0.3s; }
+.toggle-switch.active .toggle-knob { left: 24px; }
+.settings-form { display: grid; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; }
+.form-label { color: #1e293b; font-weight: 600; margin-bottom: 0.5rem; }
+.form-input { padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; font-size: 1rem; }
+.form-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+.button-group { display: flex; gap: 1rem; margin-top: 1rem; }
+.btn-save { padding: 0.75rem 1.5rem; background: #10b981; color: white; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; }
+.btn-save:hover { background: #059669; }
+.btn-cancel { padding: 0.75rem 1.5rem; background: #e2e8f0; color: #1e293b; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; }
+.btn-cancel:hover { background: #cbd5e1; }
+@media (max-width: 768px) { .superadmin-settings { padding: 1rem 0.5rem; } .settings-section { padding: 1.5rem 1rem; } }
