@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api';
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 // TODO: GET /superadmin/hotels
 
@@ -39,7 +41,7 @@ export default function HotelsManagement() {
   const performDisable = async (id) => {
     try {
       setLoading(true);
-      await api.patch(`/superadmin/hotels/${id}/status`, { enabled: false });
+      await axios.patch(`${API_URL}/api/superadmin/hotels/${id}/status`, { enabled: false });
       await fetchHotels();
     } catch (err) {
       setError(err?.response?.data?.error || err.message || 'Failed to disable');
@@ -51,7 +53,7 @@ export default function HotelsManagement() {
   const handleEnable = async (id) => {
     try {
       setLoading(true);
-      const res = await api.patch(`/superadmin/hotels/${id}/status`, { enabled: true });
+      const res = await axios.patch(`${API_URL}/api/superadmin/hotels/${id}/status`, { enabled: true });
       const updated = res.data?.hotel || res.data;
       await fetchHotels();
     } catch (err) {
@@ -63,7 +65,7 @@ export default function HotelsManagement() {
     if (!window.confirm('Delete this hotel? This is permanent.')) return;
     try {
       setLoading(true);
-      await api.delete(`/superadmin/hotels/${id}`);
+      await axios.delete(`${API_URL}/api/superadmin/hotels/${id}`);
       setSelected(null);
       await fetchHotels();
     } catch (err) {
@@ -75,11 +77,11 @@ export default function HotelsManagement() {
   const closeDetails = () => setSelected(null);
 
   // Fetch hotels (call when mounted and when filter changes to ensure fresh DB state)
-  const fetchHotels = async () => {
+  const fetchHotels = async () => { 
     setLoading(true);
     setError(null);
     try {
-      const res = await api.get('/superadmin/hotels');
+      const res = await axios.get(`${API_URL}/api/superadmin/hotels`);
       const hotelsData = res.data?.hotels || res.data || [];
       const norm = hotelsData.map(h => ({
         ...h,
