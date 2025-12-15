@@ -10,7 +10,7 @@ if (rawEnvUrl) {
   const trimmed = rawEnvUrl.replace(/\/+$/, '');
   BASE_URL = trimmed.endsWith('/api') ? trimmed : (trimmed + '/api');
 } else {
-  BASE_URL = `${import.meta.env.VITE_API_URL}api`;
+  BASE_URL = `${import.meta.env.VITE_API_URL}/api`;
 }
 
 const api = axios.create({
