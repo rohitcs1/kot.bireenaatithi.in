@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Tables.css';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Tables = () => {
   const [tables, setTables] = useState([]);
@@ -77,8 +78,8 @@ const Tables = () => {
     try {
       // Fetch both tables and orders
       const [tablesRes, ordersRes] = await Promise.all([
-        axios.get('/tables'),
-        axios.get('/orders')
+         axios.get(`${API_URL}/api/tables`),
+        axios.get(`${API_URL}/api/orders`)
       ]);
       
       const remoteOrders = ordersRes.data?.orders || [];
@@ -218,7 +219,7 @@ const Tables = () => {
   const handleChangeStatus = (tableId, newStatus) => {
     (async () => {
       try {
-        const res = await axios.put(`/tables/${tableId}`, { status: (newStatus || '').toString().toLowerCase() });
+        const res = await axios.put(`${API_URL}/api/tables/${tableId}`, { status: (newStatus || '').toString().toLowerCase() });
         const updated = res.data.table;
         setTables(prev => prev.map(t => t.id === updated.id ? { id: updated.id, number: `T-${updated.table_number}`, seats: updated.seats, status: updated.status || updated.table_status } : t));
       } catch (err) {
