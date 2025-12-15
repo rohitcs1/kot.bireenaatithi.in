@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
 const Dashboard = () => {
 
   // Local state for mobile sidebar toggling (was missing and caused ReferenceError)
@@ -36,7 +37,8 @@ const Dashboard = () => {
     setLoadingTables(true);
     try {
       // Using axios with app-level baseURL (set in App.jsx)
-      const res = await axios.get('/tables');
+      const res = await axios.get( `${API_URL}/api/tables`);
+      // console.log('Fetched tables:', res);
       const remote = (res.data && res.data.tables) ? res.data.tables : [];
       const mapped = remote.map(t => {
         const rawStatus = (t.status || t.table_status || 'available').toString();
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('/dashboard/stats');
+      const res = await axios.get(`${API_URL}/api/dashboard/stats`);
       if (res && res.data) {
         setStats(res.data);
         if (typeof res.data.activeTables === 'number') setActiveTables(res.data.activeTables);
@@ -74,7 +76,7 @@ const Dashboard = () => {
   // Fetch recent orders from database
   const fetchRecentOrders = async () => {
     try {
-      const res = await axios.get('/orders');
+      const res = await axios.get(`${API_URL}/api/orders`);
       const orders = res.data?.orders || [];
       
       // Transform orders to match UI format
@@ -141,7 +143,7 @@ const Dashboard = () => {
   // Fetch sales trend data from database
   const fetchSalesTrend = async () => {
     try {
-      const res = await axios.get('/dashboard/sales-trend');
+      const res = await axios.get(`${API_URL}/api/dashboard/sales-trend`);
       const trendData = res.data?.salesTrend || [];
       setSalesTrend(trendData);
     } catch (err) {
