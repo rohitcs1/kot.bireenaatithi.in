@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Menu.css';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Menu = () => {
   const [categories, setCategories] = useState([{ id: 'all', name: 'All' }]);
@@ -22,7 +23,7 @@ const Menu = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('/categories');
+      const response = await axios.get(`${API_URL}/api/categories`);
       // API returns { categories: [...] }
       const cats = response.data.categories || [];
       setCategories([{ id: 'all', name: 'All' }, ...cats.map(c => ({ id: c.id, name: c.name }))]);
@@ -33,7 +34,7 @@ const Menu = () => {
 
   const fetchMenuItems = async () => {
     try {
-      const res = await axios.get('/menu');
+      const res = await axios.get(`${API_URL}/api/menu`);
       const items = res.data.menu || [];
       setMenuItems(items);
     } catch (err) {
@@ -51,7 +52,7 @@ const Menu = () => {
     setCategoryLoading(true);
     setCategoryError('');
     try {
-      await axios.post('/categories', { name: newCategoryName.trim() });
+      await axios.post(`${API_URL}/api/categories`, { name: newCategoryName.trim() });
       setNewCategoryName('');
       setShowCategoryModal(false);
       await fetchCategories();
@@ -184,11 +185,11 @@ const Menu = () => {
     const doSubmit = async () => {
       try {
         if (editingItem) {
-          const res = await axios.put(`/menu/${editingItem.id}`, itemData);
+          const res = await axios.put(`${API_URL}/api/menu/${editingItem.id}`, itemData);
           const updated = res.data.menu;
           setMenuItems(menuItems.map(it => (it.id === updated.id ? updated : it)));
         } else {
-          const res = await axios.post('/menu', itemData);
+          const res = await axios.post(`${API_URL}/api/menu`, itemData);
           const created = res.data.menu;
           setMenuItems(prev => [...prev, created]);
         }
@@ -207,7 +208,7 @@ const Menu = () => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       (async () => {
         try {
-          await axios.delete(`/menu/${id}`);
+          await axios.delete(`${API_URL}/api/menu/${id}`);
           setMenuItems(menuItems.filter(item => item.id !== id));
         } catch (err) {
           console.error('Error deleting item', err);
@@ -221,7 +222,7 @@ const Menu = () => {
     (async () => {
       try {
         const current = menuItems.find(i => i.id === id);
-        const res = await axios.put(`/menu/${id}`, { available: !current.available });
+        const res = await axios.put(`${API_URL}/api/menu/${id}`, { available: !current.available });
         const updated = res.data.menu;
         setMenuItems(menuItems.map(it => (it.id === updated.id ? updated : it)));
       } catch (err) {
@@ -237,7 +238,7 @@ const Menu = () => {
       try {
         const updates = selectedItems.map(id => {
           const current = menuItems.find(i => i.id === id);
-          return axios.put(`/menu/${id}`, { available: !current.available });
+          return axios.put(`${API_URL}/api/menu/${id}`, { available: !current.available });
         });
         const results = await Promise.all(updates);
         const updatedItems = results.map(r => r.data.menu);
