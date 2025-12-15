@@ -39,7 +39,7 @@ export default function HotelsManagement() {
   const performDisable = async (id) => {
     try {
       setLoading(true);
-      await api.patch(`/api/superadmin/hotels/${id}/status`, { enabled: false });
+      await api.patch(`/superadmin/hotels/${id}/status`, { enabled: false });
       await fetchHotels();
     } catch (err) {
       setError(err?.response?.data?.error || err.message || 'Failed to disable');
@@ -51,7 +51,7 @@ export default function HotelsManagement() {
   const handleEnable = async (id) => {
     try {
       setLoading(true);
-      const res = await api.patch(`/api/superadmin/hotels/${id}/status`, { enabled: true });
+      const res = await api.patch(`/superadmin/hotels/${id}/status`, { enabled: true });
       const updated = res.data?.hotel || res.data;
       await fetchHotels();
     } catch (err) {
@@ -63,7 +63,7 @@ export default function HotelsManagement() {
     if (!window.confirm('Delete this hotel? This is permanent.')) return;
     try {
       setLoading(true);
-      await api.delete(`/api/superadmin/hotels/${id}`);
+      await api.delete(`/superadmin/hotels/${id}`);
       setSelected(null);
       await fetchHotels();
     } catch (err) {
